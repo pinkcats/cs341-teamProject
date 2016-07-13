@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Upload";
+}
+@using NoteShare.DataAccess
+@model NoteShare.Models.UploadModel
+@section scripts{
+    <script src="~/Scripts/Upload.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+}
+
+
+<h2 class="pageTitle">Upload</h2>
+
+<div id="uploadWell" class="well">
+
+    @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @id="uploadForm" }))
+    {
+        <div class="uploadInput3Wide">
+            <input name="university" hidden="hidden" type="text" value="@Model.university" />
+            
+            <input value="@Model.universityName" readonly="readonly" name="universityName" id="universityField" class="uploadField" type="text"/>
+
+            <input name="topic" class="uploadField" type="text" placeholder="Topic" />
+
+            <input name="professor" class="uploadField" type="text" placeholder="Professor Name" />
+        </div>
+        <br />
+        <div class="uploadInput3Wide">
+            <input name="courseName" class="uploadField" type="text" placeholder="Course Name" />
+
+            <input name="courseNumber" class="uploadField" type="text" placeholder="Course Number" />
+
+            <input name="title" class="uploadField" type="text" placeholder="Title" />
+        </div>
+        <br />
+        <div class="uploadInput2Wide">
+            <select name="year" class="uploadField">
+                @for (int i = 0; i < 20; i++)
+                {
+                    <option>@(DateTime.Now.Year + 1 - i)</option>
+                }
+            </select>
+
+            <select name="semester" class="uploadField">
+                <option>Fall</option>
+                <option>Spring</option>
+                <option>Summer</option>
+                <option>Winterim</option>
+                <option>Other</option>
+            </select>
+        </div>
+        <br />
+        <br />
+        <div class="uploadInput1Wide">
+            <input name="file" id="linkButton" class="form-control" type="file" />
+        </div>
+        <br />
+        <br />
+        <p style="color:whitesmoke"class="text-center">Enter note description</p>
+        <div class="uploadInput text-center">
+            <textarea name="noteText" id="textUploadBox" type="text" maxlength="2000"></textarea>
+        </div>
+        <br />
+        <div class="uploadInput1Wide">
+            <button id="uploadButton" type="submit">Submit</button>
+        </div>
+    }
+
+</div>
+
+
+

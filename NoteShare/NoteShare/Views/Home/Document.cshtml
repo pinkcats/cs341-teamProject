@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Document";
+}
+
+@model NoteShare.Models.ViewDocumentModel
+<div class="titleText">
+    <h1>@Model.title</h1>
+</div>
+<div class="dateAndCommentText">
+    <h1 class="displayInlineBlock">@Model.uploadDate.ToShortDateString()</h1>
+    <button id="commentbtn" class="displayInlineBlock">Comments</button>
+    <button id="reportbtn" class="displayInlineBlock">Report Notes</button>
+</div>
+<div class="documentContent">
+    @if (Model.fileType == NoteShare.Resources.FileTypeEnum.IMAGE)
+    {
+        <img src="@Model.contents" />
+    }
+    else if (Model.fileType == NoteShare.Resources.FileTypeEnum.PDF)
+    {
+        <object style="height: 800px; width: 100%;" data="@Model.contents"></object>
+    }
+    else if (Model.fileType == NoteShare.Resources.FileTypeEnum.TEXT)
+    {
+        <p>@Model.contents</p>
+    }
+    else
+    {
+        @Html.ActionLink("Download " + Model.title, "Download", new { @id = Model.documentId });
+    }
+</div>
+<br />
+
+@if (Model.description != string.Empty)
+{
+    <div class="well" id="documentDescriptionWell">
+        <p style="color:ghostwhite">@Model.description</p>
+    </div>
+}
+
+<div id="ReportDialog">
+    <p>Please include any details why you would like to report this note.</p>
+    <textarea id="ReportDetails"></textarea>
+</div>
+
+<div class="commentsBar">
+    @{ Html.RenderPartial("CommentBar", Model); }
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Document.js"></script>
+}

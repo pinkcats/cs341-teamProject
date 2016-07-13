@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Account";
+}
+
+@model NoteShare.Models.AccountModel
+@section scripts{
+    <script type="text/javascript">
+        var universityNames = @Html.Raw(Json.Encode(Model.universities));
+    </script>
+    <script src="~/Scripts/Account.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+}
+
+<h2 class="pageTitle">Change Password?</h2>
+
+<div id="changePasswordWell" class="well">
+    @using (Html.BeginForm("ChangePassword", "Login", FormMethod.Post, new { @id = "changePasswordForm" }))
+    {
+        <div>
+            <input name="oldPassword" id="oldPassword" type="password" placeholder="Old Password" />
+        </div>
+        <br />
+        <div>
+            <input name="password" id="password" type="password" placeholder="Password" />
+        </div>
+        <br />
+        <div>
+            <input name="passwordConfirm" id="passwordConfirm" type="password" placeholder="Re-Type Password" />
+        </div>
+        <br />
+        <button id="changePassBtn" type="submit">Change Password</button>
+    }
+</div>
+<br />
+<h2 class="pageTitle">Account</h2>
+
+<div id="account" class="well">
+    @using (Html.BeginForm("UpdateAccount", "Login", FormMethod.Post, new { @id = "updateInformationForm" }))
+    {
+        <div>
+            <input name="university" id="autocomplete" type="text" placeholder="University" />
+            <input name="universityId" id="universityId" type="hidden" value="@Model.university" />
+        </div>
+        <br />
+        <div>
+            <input name="email" id="editEmail" type="email" placeholder="Email" value="@Model.email" />
+        </div>
+        <br />
+        <button id="accountBtn" type="submit">Update Information</button>
+    }
+</div>

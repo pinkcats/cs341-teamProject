@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = Model.university.Name;
+}
+
+@model NoteShare.Models.UniversityModel
+
+<h1>@Model.university.Name</h1>
+
+
+<h3>Address:</h3>
+<p>@(Model.university.Address)<br /> @(Model.university.City), @(Model.university.State), @(Model.university.Zip)</p>
+
+
+<h3>Website:</h3>
+<p><a href="http://@Model.university.URL">@Model.university.URL</a></p>
+
+<h3>Telephone:</h3>
+<p>@PhoneNumber(Model.university.Telephone)</p>
+
+<h3>Admissions: </h3>
+<p><a href="http://@Model.university.AdmissionURL">@Model.university.AdmissionURL</a></p>
+
+<h3>Financial Aid: </h3>
+<p><a href="http://@Model.university.FinancialAidUrl">@Model.university.FinancialAidUrl</a></p>
+
+@functions {
+    public string PhoneNumber(string value)
+    {
+        value = new System.Text.RegularExpressions.Regex(@"\D")
+            .Replace(value, string.Empty);
+        value = value.TrimStart('1');
+        if (value.Length == 7)
+            return Convert.ToInt64(value).ToString("###-####");
+        if (value.Length == 10)
+            return Convert.ToInt64(value).ToString("###-###-####");
+        if (value.Length > 10)
+            return Convert.ToInt64(value)
+                .ToString("###-###-#### " + new String('#', (value.Length - 10)));
+        return value;
+    }
+}
+
+<iframe width="600" height="450" frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed/v1/place?q=@(Model.university.Latitude)+@(Model.university.Longitude)&key=AIzaSyAHaowQe5quadc-AUTGBlonTE7Xj1c8j2c" allowfullscreen></iframe>

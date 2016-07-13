@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Advanced Search";
+}
+
+@model NoteShare.Models.UniversitySearchModel
+<script type="text/javascript">
+    var universityNames = @Html.Raw(Json.Encode(Model.universities));
+</script>
+
+<h1 class="center">Advanced Search</h1>
+<div id="SearchOptions" class="displayInlineBlock">
+    <input id="University" placeholder="Enter a University"/>
+    <input id="UniversityId" type="hidden" />
+    <input id="ClassName" placeholder="Enter a Class" />
+    <input id="Professor" placeholder="Enter a Professor" />
+    <input id="Description" placeholder="Enter a Description" />
+    <input id="Department" placeholder="Enter a Department" />
+    <select id="FileType">
+        <option value="">Select a File Type</option>
+        <option value="txt">Text</option>
+        <option value="pdf">PDF</option>
+        <option value="img">Image</option>
+        <option value="ppt">Powerpoint</option>
+        <option value="doc">Word Document</option>
+        <option value="xls">Excel Spreadsheet</option>
+    </select>
+    <p id="SortByDate">Sort by Date</p>
+    <p id="SortByRating">Sort by Rating</p>
+    <button id="SearchButton">Search</button>
+</div>
+<div class="displayInlineBlock contentArea searchResultArea">
+    <div id="SearchResults">
+
+    </div>
+    <div class="paging">
+        <p id="ResultsPagingNumber">Showing 0-0 of 0 records</p>
+        <p id="ResultsPagingPrev">Prev</p>
+        <p id="ResultsPagingNext">Next</p>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/jquery.blockUI.js"></script>
+    <script src="~/Scripts/Search.js"></script>
+}

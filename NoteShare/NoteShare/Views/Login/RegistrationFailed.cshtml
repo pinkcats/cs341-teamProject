@@ -1,0 +1,8 @@
+﻿@{
+    ViewBag.Title = "Registration Failed";
+}
+@model NoteShare.Models.RegistrationFailedModel
+<h2>Registration Failed</h2>
+<p>@Model.reason</p>
+@Html.ActionLink("Try again.", "Register", "Home");
+

@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoteShare - @ViewBag.Title</title>
+    <link rel="icon" href="~/Content/images/favicon.ico" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Scripts/jquery-ui.css")
+    @RenderSection("styles", required: false)
+</head>
+<body>
+    <div id="Header">
+        <div id="HeaderSection">
+            <a href="@Url.Action("Index", "Home")"><img id="SiteLogo" src="~/Content/images/logo.png" /></a>
+            <div id="LoginArea">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    
+                    <div style="margin-top: 5px;">
+                        <div id="divHello">Hello, @User.Identity.Name</div>
+                        @if (Request.Cookies["IsAdmin"] != null && Request.Cookies["IsAdmin"].Value == "Admin") //need to determine if user is an admin
+                        {
+                            <div id="adminLinkDashboard" style="margin-left: 0px;" class="displayInlineBlock">@Html.ActionLink("Dashboard", "Dashboard", "Admin")</div>
+                            <div id="adminLinkReported" style="margin-left: 5px;" class="displayInlineBlock">@Html.ActionLink("Recent List", "Recent", "Admin")</div>
+                            <div id="adminLinkRecent" style="margin-left: 5px; margin-right: 5px;" class="displayInlineBlock">@Html.ActionLink("Reported List", "ReportedNotes", "Admin")</div>
+                        }                               
+                        <div id="linkAccount"style="margin-left: 0px;" class="displayInlineBlock">@Html.ActionLink("Account", "Account", "Login")</div>
+                        <div id="linkMyNotes" style="margin-left: 5px;" class="displayInlineBlock">@Html.ActionLink("My Notes", "Notes", "Home")</div>
+                        <div id="linkLogout" style="margin-left: 5px;" class="displayInlineBlock">@Html.ActionLink("Logout", "Logout", "Login")</div>
+                    </div>
+                }
+                else
+                {
+                    using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                    {
+                        <div class="marginBottom5"><input name="username" id="Email" placeholder="Username" tabindex="1" /><button tabindex="3" type="submit">Sign In</button></div>
+                        <div><input name="password" id="Password" type="password" placeholder="Password" tabindex="2" />@Html.ActionLink("Sign Up", "Register", null, new { @id = "linkButton" })</div>
+                        <div>@Html.ActionLink("Forgot Password?", "ForgotPassword", "Home")</div>
+                    }
+                }
+            </div>
+        </div>
+        <div id="SearchBar">
+            <input type="search" placeholder="Search" class="searchbox" />
+            @Html.ActionLink("Advanced Search", "Search", "Home")
+        </div>
+    </div>
+    <!-- All of our content will show up in this area -->
+    <div id="Content">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/Scripts/jquery-2.1.4.min.js")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/Site.js")
+    @Scripts.Render("~/Scripts/jquery-ui.min.js")
+    @Scripts.Render("~/Scripts/jquery.raty.js")
+    @Styles.Render("~/Scripts/jquery.raty.css")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

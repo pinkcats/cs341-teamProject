@@ -1,0 +1,16 @@
+﻿@{ 
+    ViewBag.Title = "Error";
+}
+@model NoteShare.Models.ErrorModel
+    
+<h3>An error occurred while processing your request.</h3>
+<br />
+
+<h5>Error Detail:</h5>
+
+<div id="forgotPasswordWell" class="well">
+    @Model.error
+</div>
+
+<h5>Please contact support if you receive this error more than once.</h5>
+    

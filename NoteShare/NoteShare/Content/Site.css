@@ -1,0 +1,552 @@
+﻿body {
+	margin: 0;
+	padding: 0;
+	background-color: teal;
+}
+
+input, select {
+	/* Reset styles while I work on MAC */
+	-webkit-appearance: none;
+}
+
+select {
+	height: 30px;
+	padding-left: 5px;
+	width: 136px;
+}
+
+button {
+	color: ghostwhite;
+	background-color: gray;
+	border-radius: 3px;
+    border:1px solid white;
+}
+
+button:hover {
+	background-color: darkgray;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+#Header {
+	background-color: black;
+}
+
+#HeaderSection {
+    margin-bottom: 5px;
+}
+
+#SiteLogo,#LoginArea {
+	display: inline-block;
+}
+
+#LoginArea {
+	float: right;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+#LoginArea button {
+	width: 75px;
+}
+
+#Email,#Password {
+	margin-right: 10px;
+}
+
+#SearchBar {
+	background-color: #5C5C5C;
+}
+
+.searchbox {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 15px;
+	padding: 5px 5px 5px 20px;
+	background-color: gray;
+	border: 1px solid #5C5C5C;
+	border-radius: 15px;
+	background-image: url(images/search_icon.png);
+	background-size: 5%;
+	background-position: 5px;
+	background-repeat: no-repeat;
+	width: 300px;
+}
+
+.marginBottom5 {
+	margin-bottom: 5px;
+}
+
+.center {
+	text-align: center;
+}
+
+.displayInlineBlock {
+	display: inline-block;
+}
+
+#Content {
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+}
+
+.contentArea {
+	background-color: lightgray;
+	padding: 10px;
+	width: 70%;
+	vertical-align: top;
+	min-height: 400px;
+}
+
+#SearchOptions input {
+	height: 25px;
+	width: 130px;
+	border: none;
+	border-radius: 5px;
+	padding-left: 5px;
+}
+
+#SearchOptions input, #SearchOptions select {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.newNotesButton,.notes {
+	border: none;
+	background-color: #5C5C5C;
+	color: white;
+	padding: 10px 15px;
+}
+
+.newNotesButton {
+	width: 120px;
+}
+
+.newNotesButton:hover {
+    text-decoration: none;
+    background-color: lightgray;
+    color: white;
+}
+
+.notes {
+	margin-bottom: 10px;
+	margin-right: 20%;
+    display: none;
+}
+
+.adminNotes .notes {
+    display: block;
+}
+
+.notes div {
+	display: inline-block;
+}
+
+.notesSection {
+	width: 80%;
+	float: right;
+}
+
+.noteType, .buttonArea {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.courseName {
+	float: left;
+	margin-right: 10px;
+}
+
+.buttonArea {
+	float: right;
+}
+
+.titleText,.dateAndCommentText {
+	width: 49%;
+	display: inline-block;
+}
+
+.titleText {
+	text-align: left;
+}
+
+.dateAndCommentText {
+	text-align: right;
+}
+
+.dateAndCommentText button {
+	background-color: black;
+	width: 120px;
+}
+
+.documentContent {
+	background-color: lightgray;
+	min-height: 400px;
+}
+
+#documentDescriptionWell {
+    background-color: gray;
+    border-color: lightgray;
+    width: 100%;
+    padding: 10px;
+    height: auto;
+    min-width: 600px;
+}
+
+.pageTitle {
+    color:white;
+}
+
+.miniButton {
+    color: ghostwhite;
+    font-size: 10px;
+    background-color: gray;
+    border-radius: 3px;
+    text-decoration: none;
+    border: 1px solid;
+    padding: 1px 4px;
+    margin: 1px;
+}
+
+.miniButton:hover {
+    font-size: 12px;
+}
+
+#linkButton {
+    color: ghostwhite;
+    background-color: gray;
+    border-radius: 3px;
+    text-decoration: none;
+    border: 1px solid;
+    padding: 3px 12px; 
+    margin: 0 auto;
+}
+
+#linkLogout, #linkMyNotes, #linkAccount { 
+    color: ghostwhite;
+    background-color: gray;
+    border-radius: 3px;
+    text-decoration: none;
+    border: 1px solid;
+    padding: 3px 12px; 
+    margin: 1px auto;
+}
+
+#linkButton:hover, #linkAccount:hover, #linkLogout:hover, #linkMyNotes:hover, #linkAccount:hover {
+    background-color: darkgray;
+}
+
+#linkButton a:hover, #linkAccount a:hover,#linkLogout a:hover,#linkMyNotes a:hover,#linkAccount a:hover {
+    color: ghostwhite;
+    text-decoration: none;
+}
+
+#adminLinkDashboard, #adminLinkReported, #adminLinkRecent {
+    color: ghostwhite;
+    background-color: gray;
+    border-radius: 3px;
+    text-decoration: none;
+    border: 1px solid;
+    padding: 3px 12px; 
+    margin: 1px auto;
+}
+
+#adminLinkDashboard:hover, #adminLinkReported:hover, #adminLinkRecent:hover {
+    background-color: darkgray;
+}
+
+#adminLinkDashboard a:hover, #adminLinkReported a:hover, #adminLinkRecent a:hover {
+    color: ghostwhite;
+    text-decoration: none;
+}
+
+#divHello {
+    color:ghostwhite; 
+    margin: 2px auto;
+}
+
+#recentWell {
+    color: ghostwhite;
+    background-color: gray;
+    border-color: lightgray;
+    border-radius: 3px;
+}
+
+.recentElement {
+    background-color : darkgray;
+    border: 1px solid;
+    border-color:ghostwhite;
+    margin-bottom: 5px;
+}
+
+.elementTitle {
+    color: teal;
+}
+
+#uploadWell {
+    background-color:gray;
+    border-color:lightgray;
+    width:100%;
+    padding: 10px;
+    height:auto;
+    min-width: 800px;
+}
+
+.uploadInput1Wide {
+    margin: 0 auto;
+    width: 250px;
+}
+
+.register2Wide {
+    margin: 0 auto;
+    width: 500px;
+}
+
+.uploadInput2Wide {
+    margin: 0 auto;
+    width: 500px;
+}
+
+.uploadInput3Wide {
+    margin: 0 auto;
+    width: 715px;
+}
+
+.uploadField {
+    width: 235px;
+    margin: 0 auto;
+}
+
+#registerWell {
+    background-color:gray;
+    border-color:lightgray;
+    width:100%;
+    padding: 10px;
+    height:auto;
+    min-width: 600px;
+}
+
+.textCenter{
+    margin: 0 auto;
+}
+
+#textUploadBox{
+    width: 715px;
+    min-height: 120px;
+}
+
+#uploadButton {
+    margin: 0 auto;
+    width: 250px;
+}
+
+#forgotPasswordWell, #changePasswordWell, #account {
+    color:white;
+    background-color:gray;
+    border-color:lightgray;
+}
+
+.textAreas {
+    height: 200px;
+    width: 85%;
+}
+
+.commentText {
+    margin-top: 10px;
+    padding: 1em;
+}
+
+.Comments {
+    background-color: darkgray;
+    width: 400px;
+    height: 100%;
+    float: right;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    border: 3px solid black;
+}
+
+.commentButton {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.deleteButton{
+    float: right;
+    margin-top: 10px;
+	margin-bottom: 10px;
+    padding-right: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.adminPageReportedComments{
+    margin-right: 30%;
+    margin-left: 10%;
+    margin-bottom: 10px;
+    border: none;
+	background-color: lightgrey;
+	color: black;
+	padding: 10px 15px;
+}
+
+.adminPageReportedComments div{
+    display: inline-block;
+}
+
+#changePasswordWell, #account{
+    padding-left: 50px;
+    border: solid;
+    border-style: groove;
+}
+
+#oldPassword, #newPassword, #uniID, #editEmail{
+    border: solid;
+    border-color: white;
+}
+
+#changePassBtn, #accountBtn{
+	color: ghostwhite;
+	background-color: gray;
+	border-radius: 3px;
+    border:1px solid white;
+}
+
+.commentsSection {
+    padding: 2em;
+    width: 95%;
+    float:right;
+}
+
+#comMessage,#userCom {
+    display: inline-block;
+}
+
+.theComm {
+    height: 40px;
+}
+
+.resultName,.resultDate{
+    display: inline-block;
+    width: 34%;
+}
+
+.resultRating {
+    width: 20%;
+    text-align: center;
+    display: inline-block;
+}
+
+.resultLink {
+    display: inline-block;
+    width: 10%;
+}
+
+.resultDate,.resultLink {
+    text-align: right;
+}
+
+#ResultsPagingNumber {
+    width: 67%;
+    display: inline-block;
+}
+
+#ResultsPagingNext,#ResultsPagingPrev {
+    width: 15%;
+    display: inline-block;
+}
+
+#ResultsPagingNext:hover,#ResultsPagingPrev:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.paging { 
+    position: absolute; bottom: 0; width: 100%;
+}
+
+.searchResultArea {
+    position: relative;
+}
+
+#SearchResults {
+    margin-bottom: 30px;
+}
+
+.comment {
+    margin-bottom: 10px;
+	margin-right: 5%;
+    background-color: #5C5C5C;
+    color: white;
+    padding: 20px 20px;
+}
+
+.makePubOrPri,.deleteNote {
+    cursor: pointer;
+}
+
+#MakePublicOrPrivate,#DeleteNote,#ReportDialog, #SuspendOrUnsuspendUser, #SuspendOrUnsuspendNote  {
+    display: none;
+}
+
+.ui-widget {
+    font-size: 1em !important;
+}
+
+#closeComments {
+   background-color: grey;
+}
+
+#userCom {
+    margin-left: 70px;
+}
+
+.commentArea {
+    overflow-y: scroll;
+    height: 50%;
+}
+
+.error {
+    color: red !important;
+    font-weight: bold !important;
+}
+
+.deleteComment {
+    float: right;
+}
+
+#ReportDetails {
+    width: 100%;
+}
+.inLine{
+    display:inline-block;
+}
+.adminUser{
+    background-color: lightgray;
+    padding: 1em;
+    width: 90%;
+    margin-left: -50px;
+}
+#allUserNotes{
+    padding:1em;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.adminUserInfo{
+   padding-right: 10px;
+}

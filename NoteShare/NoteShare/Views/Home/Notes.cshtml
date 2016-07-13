@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Notes";
+}
+
+@model NoteShare.Models.UserNotesModel
+
+<div class="displayInlineBlock" style="margin-top: 20px;">
+    @Html.ActionLink("New Notes", "Upload", null, new { @class = "newNotesButton" })
+</div>
+<div class="notesSection">
+    @if (Model.courseNotes.Count != 0)
+    {
+        foreach (var courseNote in Model.courseNotes)
+        {
+            <div class="notes">
+                <div class="courseName">@((courseNote.course == null) ? "No course" : courseNote.course.Name)</div>
+                <div class="noteType">@courseNote.note.Title</div>
+                <div class="isPrivate hidden">@courseNote.note.IsPrivate</div>
+                <div class="noteId hidden">@courseNote.note.Id</div>
+                <div class="buttonArea">@Html.ActionLink("View", "Document", new { @id = courseNote.note.Id }) <a class="makePubOrPri">@((courseNote.note.IsPrivate) ? "Make Public" : "Make Private")</a><a class="deleteNote">Delete Note</a></div>
+            </div>
+        }
+
+        if (Model.courseNotes.Count > 10)
+        {
+            <button id="ShowMore">Show More</button>
+        }
+    }
+    else
+    {
+        <p>No notes. . .</p>
+    }
+</div>
+
+<div id="MakePublicOrPrivate">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Are you sure you want to make this note <span id="PubOrPriText">private</span>?</p>
+</div>
+
+<div id="DeleteNote">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span> This action is permanent and cannot be un-done. Are you sure you want to DELETE this note?</p>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/UserNotes.js"></script>
+}

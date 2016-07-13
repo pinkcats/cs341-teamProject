@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "CommentBar";
+}
+@using NoteShare.DataAccess
+@using NoteShare.Models
+@model NoteShare.Models.ViewDocumentModel
+<div class="Comments" style="display:none;">
+    <div>
+        <button id="closeComments" class="displayInlineBlock">Close</button>
+        <h2 class="center">Comments</h2>
+        @if (User.IsInRole("User"))
+        {
+            <p>Hi Admin</p>
+        }
+        @if (User.Identity.IsAuthenticated)
+        {
+            <span id="userId" class="hidden">@User.Identity.Name</span>
+            <span id="noteId" class="hidden">@Model.documentId</span>
+            <h4 class="center">Rate this note</h4>
+            <div id="rating" class="center">
+            </div>
+            <form id="commentForm">
+                <div class="center">
+                    <textarea name="commentText" id="commentText" class="textAreas commentText" placeholder="Type your comment here..." maxlength="2000"></textarea>
+                </div>
+                <span id="commentError" class="error center"></span>
+                <div class="commentButton" id="addComment" onclick="validator.validate()">
+                    <button>Submit</button>
+                </div>
+            </form>
+        }
+    </div>
+    <div class="commentArea">
+        @if (Model.comments.Count != 0)
+        {
+            foreach (UserComment com in this.Model.comments)
+            {
+                <div class="commentsSection">
+                    <div class="comment">
+                        <span id="comId"class="hidden">@com.comment.Id</span>
+                        <div id="comMessage">@com.comment.Message</div>
+                        <div id="userCom">By @com.user</div>
+                        @if (User.Identity.Name == com.user)
+                        {
+                            <button class="deleteComment">X</button>
+                        }
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+

@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Register";
+}
+
+@model NoteShare.Models.RegistrationModel
+@section scripts{
+    <script type="text/javascript">
+        var universityNames = @Html.Raw(Json.Encode(Model.universityNameList));
+    </script>
+    <script src="~/Scripts/Register.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+}
+
+<h2 class="pageTitle">Register</h2>
+
+<div id="registerWell" class="well">
+    
+    @using (Html.BeginForm("Register", "Login", FormMethod.Post, new {@id="registerForm" }))
+    {
+        <div class="register2Wide">
+            <input class="uploadField" name="email" id="Email" type="email" placeholder="Email"/>
+            
+            <input class="uploadField" name="universityName" id="autocomplete"  type="text" placeholder="Your University"/>
+
+            <input id="universityId" name="universityId" type="text" hidden/>
+        </div>
+        <br />
+        <div class="register2Wide">
+            <input class="uploadField" name="username" id="Username" type="text" placeholder="Username"/>
+        </div>
+        <br />
+        <div class="register2Wide">
+            <input class="uploadField" name="password" id="Password" type="password" placeholder="Password"/>
+        </div>
+        <br />
+        <div class="register2Wide">
+            <input class="uploadField" name="passwordConfirm" id="PasswordConfirm" type="password" placeholder="Re-Type Password"/>
+        </div>
+        <br />
+        <div class="uploadInput1Wide">
+            <button id="uploadButton" type="submit">Submit</button>
+        </div>
+    }    
+</div>

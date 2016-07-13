@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "DashBoard";
+}
+@model NoteShare.Models.AdminNotesModel
+<h2>All Users</h2>
+<div>
+    @foreach (var user in Model.userNotes)
+    {
+    <div class="adminNotes">
+        <div class="adminUser inLine">
+            <div class="id hidden">@user.user.Id</div>
+            <div class="inLine username bold adminUserInfo"> @user.user.Username</div>
+            <div id="score" class="hidden">@user.rating</div>
+            <div class="rating inLine adminUserInfo"></div>
+            <div class="inLine bold adminUserInfo">Failed Login Attempts: @user.user.FailedLoginAttempts</div>
+            <div class="userSuspended hidden">@user.user.IsSuspended</div>
+            <button class="suspendUser adminUserInfo">@((user.user.IsSuspended) ? "Unsuspend" : "Suspend")</button>
+        </div>
+       <div class="adminNotesArea">
+        @foreach (var note in user.notes)
+        {
+            <div id="allUserNotes" class="notes">
+                <div class="noteId hidden">@note.Id</div>
+                <div class="inLine bold title adminUserInfo">@note.Title</div>
+                <div class="inLine adminUserInfo">@Html.ActionLink("View", "Document/" + note.Id, "Home")</div>
+                <div class="noteSuspended hidden"></div>
+                <button class="suspendNote adminUserInfo">@((note.IsSuspended) ? "Unsuspend" : "Suspend")</button>
+            </div>
+        }
+       </div>
+    </div>
+    <br/>
+    }
+</div>
+
+
+<div id="SuspendOrUnsuspendUser">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Are you sure you <span id="suspention">suspend</span> this user?</p>
+</div>
+
+<div id="SuspendOrUnsuspendNote">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin: 0 7px 20px 0;"></span>Are you sure you want to <span id="suspention">suspend</span> this note?</p>
+</div>
+@section scripts{
+    <script src="~/Scripts/AdminNotes.js"></script>
+}

@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Recent";
+}
+@section scripts{
+    <script src="~/Scripts/Recent.js"></script>    
+}
+@model NoteShare.Models.RecentModel
+
+<h2>Recent Activity</h2>
+
+
+
+<div id="recentWell" class="well">
+
+    <div id="recentNotes">
+    Notes:
+    @for(int i = Model.noteList.Count-1;i>Model.noteList.Count-11;i--)
+    {
+        var note = Model.noteList[i];
+        <div class="recentElement">
+            <div class="displayInlineBlock">@Html.ActionLink("View", "Document", "Home", new { @id = note.Id }, new { @class = "miniButton" })</div>
+            <div class="elementTitle displayInlineBlock">Title: </div> <div class="displayInlineBlock">@note.Title</div>
+            <div class="elementTitle displayInlineBlock">Date: </div> <div class="displayInlineBlock">@note.DateAdded</div>
+            <div hidden>@note.UserId</div>
+        </div>
+    }   
+    </div>
+    <div id="recentComments">
+        Comments (first 100 chars):
+        @for(int i = Model.commentList.Count-1;i> Model.commentList.Count-11;i--)
+        {
+            var comment = Model.commentList[i];
+            <div class="recentElement">
+                <div class="displayInlineBlock">@Html.ActionLink("View", "Document", "Home", new { @id = comment.NoteId }, new { @class = "miniButton" })</div>
+                <div class="elementTitle displayInlineBlock">Message: </div><div class="displayInlineBlock">@comment.Message</div>
+            </div>
+        }
+    </div>
+
+</div>
